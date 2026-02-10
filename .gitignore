@@ -1,0 +1,22 @@
+# Node modules (if we add npm packages later)
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+desktop.ini

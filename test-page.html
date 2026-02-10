@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Test Page - Web PDF Downloader Extension Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #d32f2f;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #666;
+            margin-top: 30px;
+        }
+        .pdf-link {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f5f5f5;
+            border-left: 4px solid #d32f2f;
+            text-decoration: none;
+            color: #333;
+        }
+        .pdf-link:hover {
+            background-color: #e0e0e0;
+        }
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📄 PDF Test Page</h1>
+    
+    <div class="instructions">
+        <strong>Instructions:</strong>
+        <ol>
+            <li>Install the Web PDF Downloader extension in Microsoft Edge</li>
+            <li>Open this HTML file in your browser</li>
+            <li>Click the extension icon in the toolbar</li>
+            <li>The extension will detect all PDF links on this page</li>
+            <li>Click "Download" to download any PDF</li>
+        </ol>
+    </div>
+
+    <h2>Sample PDF Links</h2>
+    <p>Below are various types of PDF links that the extension should detect:</p>
+
+    <h3>Direct PDF Links</h3>
+    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" class="pdf-link">
+        📄 Sample PDF from W3C (Direct Link)
+    </a>
+    
+    <a href="https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf" class="pdf-link">
+        📄 Adobe Sample PDF (Direct Link)
+    </a>
+
+    <h3>PDF Links with Query Parameters</h3>
+    <a href="https://example.com/document.pdf?version=2&download=true" class="pdf-link">
+        📄 PDF with Query Parameters (Example URL)
+    </a>
+
+    <h3>Embedded PDF</h3>
+    <p>The extension can also detect PDFs embedded in the page:</p>
+    <div style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+        <p><em>Note: Embedded PDF would appear here (requires actual PDF URL)</em></p>
+        <!-- Uncomment to test embedded PDF detection:
+        <embed src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+               type="application/pdf" 
+               width="100%" 
+               height="400px" />
+        -->
+    </div>
+
+    <h3>PDF in iframe</h3>
+    <p>PDFs can also be loaded in iframes:</p>
+    <div style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+        <p><em>Note: PDF iframe would appear here (requires actual PDF URL)</em></p>
+        <!-- Uncomment to test iframe PDF detection:
+        <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+                width="100%" 
+                height="400px">
+        </iframe>
+        -->
+    </div>
+
+    <h2>Testing the Extension</h2>
+    <div class="instructions">
+        <p><strong>Expected Behavior:</strong></p>
+        <ul>
+            <li>The extension should find at least 3-4 PDF links on this page</li>
+            <li>Each PDF should be listed in the extension popup</li>
+            <li>Clicking "Download" should save the PDF to your downloads folder</li>
+            <li>The extension popup should show the filename and URL for each PDF</li>
+        </ul>
+    </div>
+
+    <h2>Additional Resources</h2>
+    <p>For more information about the Web PDF Downloader extension:</p>
+    <ul>
+        <li>Check the <code>README.md</code> file for installation instructions</li>
+        <li>Review the <code>manifest.json</code> for extension configuration</li>
+        <li>Examine the source code in <code>popup.js</code>, <code>background.js</code>, and <code>content.js</code></li>
+    </ul>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666;">
+        <p>This is a test page for the Web PDF Downloader browser extension.</p>
+    </footer>
+</body>
+</html>
