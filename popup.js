@@ -60,17 +60,19 @@ async function scanForPDFs() {
 
 // Function that runs in the page context to find PDFs
 function findPDFsOnPage() {
-  const pdfs = new Set();
+  const pdfsMap = new Map();
   
   // Find all links that point to PDF files
   const links = document.querySelectorAll('a[href]');
   links.forEach(link => {
     const href = link.href;
     if (href && (href.toLowerCase().endsWith('.pdf') || href.toLowerCase().includes('.pdf?'))) {
-      pdfs.add({
-        url: href,
-        text: link.textContent.trim() || 'Untitled PDF'
-      });
+      if (!pdfsMap.has(href)) {
+        pdfsMap.set(href, {
+          url: href,
+          text: link.textContent.trim() || 'Untitled PDF'
+        });
+      }
     }
   });
   
@@ -80,10 +82,12 @@ function findPDFsOnPage() {
     const src = embed.getAttribute('src') || embed.getAttribute('data');
     if (src && (src.toLowerCase().endsWith('.pdf') || src.toLowerCase().includes('.pdf?'))) {
       const fullUrl = new URL(src, window.location.href).href;
-      pdfs.add({
-        url: fullUrl,
-        text: 'Embedded PDF'
-      });
+      if (!pdfsMap.has(fullUrl)) {
+        pdfsMap.set(fullUrl, {
+          url: fullUrl,
+          text: 'Embedded PDF'
+        });
+      }
     }
   });
   
@@ -93,14 +97,16 @@ function findPDFsOnPage() {
     const src = iframe.getAttribute('src');
     if (src && (src.toLowerCase().endsWith('.pdf') || src.toLowerCase().includes('.pdf?'))) {
       const fullUrl = new URL(src, window.location.href).href;
-      pdfs.add({
-        url: fullUrl,
-        text: 'PDF in iframe'
-      });
+      if (!pdfsMap.has(fullUrl)) {
+        pdfsMap.set(fullUrl, {
+          url: fullUrl,
+          text: 'PDF in iframe'
+        });
+      }
     }
   });
   
-  return Array.from(pdfs);
+  return Array.from(pdfsMap.values());
 }
 
 function displayPDFs(pdfs) {
